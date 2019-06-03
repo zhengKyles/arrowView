@@ -149,12 +149,13 @@ class ArrowView : View {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         var heightSpec=heightMeasureSpec
         var widthSpec=widthMeasureSpec
-
+        val overX = (Math.sin(mLineRadius/2) * mPaint.strokeWidth / 2).toFloat()
+        val overY = (Math.cos(mLineRadius/2) * mPaint.strokeWidth / 2).toFloat()
         if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.AT_MOST) {
             var height = 0f
             height = when (mDirection) {
                 Direction.TOP, Direction.BOTTOM -> {
-                    (Math.cos(mLineRadius / 2) * mLineLength).toFloat()
+                    (Math.cos(mLineRadius / 2) * mLineLength).toFloat()+2*overY
                 }
                 Direction.LEFT, Direction.RIGHT -> {
                     2 * (Math.sin(mLineRadius / 2) * mLineLength).toFloat()
@@ -169,7 +170,7 @@ class ArrowView : View {
                     2 * (Math.sin(mLineRadius / 2) * mLineLength).toFloat()
                 }
                 Direction.LEFT, Direction.RIGHT -> {
-                    (Math.cos(mLineRadius / 2) * mLineLength).toFloat()
+                    (Math.cos(mLineRadius / 2) * mLineLength).toFloat()+2*overX
                 }
             }
             widthSpec=MeasureSpec.makeMeasureSpec(width.toInt(),MeasureSpec.EXACTLY)
