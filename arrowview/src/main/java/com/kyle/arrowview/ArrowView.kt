@@ -14,12 +14,17 @@ class ArrowView : View {
     private lateinit var mPaint: Paint
     //返回箭头的两根线条长度,单位dp
     private var mLineLength: Float = 0.0f
+    //返回箭头的两根线条宽度,单位dp
+    private var mLineWidth: Float = 0.0f
     //两根线条夹角
     private var mLineRadius: Double = 0.0
     //箭头方向
     private var mDirection = Direction.LEFT
 
     private var DEFAULT_LINE_COLOR = Color.parseColor("#606060")
+    private var DEFAULT_LINE_LENGTH = 14F
+    private var DEFAULT_LINE_WIDTH = 2F
+
     private var mLineColor = DEFAULT_LINE_COLOR
 
 
@@ -35,6 +40,12 @@ class ArrowView : View {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ArrowView)
         mLineColor = typedArray.getColor(R.styleable.ArrowView_av_lineColor, DEFAULT_LINE_COLOR)
         mDirection= Direction.values()[typedArray.getInt(R.styleable.ArrowView_av_direction,Direction.LEFT.ordinal)]
+        mLineLength=typedArray.getDimension(R.styleable.ArrowView_av_line_length,
+            DensityUtil.dip2px(context,DEFAULT_LINE_LENGTH).toFloat()
+        )
+        mLineWidth=typedArray.getDimension(R.styleable.ArrowView_av_line_width,
+            DensityUtil.dip2px(context,DEFAULT_LINE_WIDTH).toFloat()
+        )
         init()
     }
 
@@ -42,49 +53,13 @@ class ArrowView : View {
      * 初始化
      */
     private fun init() {
-        mLineLength = DensityUtil.dip2px(context, 14F).toFloat()
         mLineRadius = Math.toRadians(90.0)
-
         mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mPaint.color = mLineColor
-        mPaint.strokeWidth = DensityUtil.dip2px(context, 2f).toFloat()
+        mPaint.strokeWidth = mLineWidth
+        invalidate()
     }
 
-
-    class Builder(view: ArrowView) {
-        var arrowView = view
-        /***
-         * 设置线的宽度
-         */
-        fun setLineWidth(width: Float): Builder {
-            arrowView.mPaint.strokeWidth = DensityUtil.dip2px(arrowView.context, width).toFloat()
-            return this
-        }
-
-        /***
-         * 设置线的长度,单位dp
-         */
-        fun setLineLength(length: Float): Builder {
-            arrowView.mLineLength = DensityUtil.dip2px(arrowView.context, length).toFloat()
-            return this
-        }
-
-        /***
-         * 设置方向，有TOP、LEFT、RIGHT、BOTTOM可选
-         */
-        fun setDirection(direction: Direction): Builder {
-            arrowView.mDirection = direction
-            return this
-        }
-
-        /***
-         * 颜色，非资源文件路径，格式如:Color.WHITE、Color.parseColor("#FFF")
-         */
-        fun setColor(color: Int): Builder {
-            arrowView.mPaint.color = color
-            return this
-        }
-    }
 
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
