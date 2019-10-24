@@ -8,6 +8,8 @@
         tools:context=".MainActivity">
 
     <com.kyle.arrowview.ArrowView
+            app:av_direction="RIGHT"
+            app:av_lineColor="#fff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
