@@ -9,7 +9,7 @@
             <enum name="RIGHT" value="2"/>
             <enum name="BOTTOM" value="3"/>
         </attr>
-        <attr name="av_line_length" format="integer"/>
+        <attr name="av_line_length" format="dimension"/>
         <attr name="av_line_width" format="dimension"/>
     </declare-styleable>
 </resources>
