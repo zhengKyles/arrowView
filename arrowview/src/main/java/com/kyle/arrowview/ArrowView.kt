@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.View
 import java.util.*
 
-class ArrowView : View {
+open class ArrowView : View {
     private lateinit var mPaint: Paint
     //返回箭头的两根线条长度,单位dp
     private var mLineLength: Float = 0.0f
