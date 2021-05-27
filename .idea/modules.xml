@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/arrowView.iml" filepath="$PROJECT_DIR$/.idea/arrowView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/arrowView.iml" filepath="$PROJECT_DIR$/arrowView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/arrowview/arrowview.iml" filepath="$PROJECT_DIR$/arrowview/arrowview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arrowView.iml" filepath="$PROJECT_DIR$/.idea/modules/arrowView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/arrowView.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/arrowView.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arrowview/arrowView.arrowview.iml" filepath="$PROJECT_DIR$/.idea/modules/arrowview/arrowView.arrowview.iml" />
     </modules>
   </component>
 </project>
